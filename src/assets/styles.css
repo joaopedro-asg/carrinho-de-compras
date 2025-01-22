@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+    font-family: "Oswald", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #3e4a82;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-item,
+.form-desc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="number"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #50505000;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    background-color: #3e4a82;
+    color: #ffffff;
+    border-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="number"] {
+    max-width: 80px; /* Limita a largura dos campos numéricos */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3e4a82;
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+  
+button:hover {
+    background-color: #ffffff;
+    color: #3e4a82;
+    border-color: #3e4a82;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.expanded-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #000000;
+    font-size: 0.9rem;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+td:nth-child(even) {
+    background-color: #d4dcff;
+}
+
+.total {
+    text-align: right;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #ffffff;
+}
+
+.promo {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .form-item, .form-desc {
+        flex-direction: column;
+    }
+    .expanded-table {
+        width: 50%;
+    }
+}
