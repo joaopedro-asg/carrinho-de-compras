@@ -2,7 +2,7 @@
   "name": "carrinho-de-compras",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://joaopedro-asg.github.io/carrinho-de-compras",
+  "homepage": "https://joaopedro-asg.github.io/carrinho-de-compras/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
