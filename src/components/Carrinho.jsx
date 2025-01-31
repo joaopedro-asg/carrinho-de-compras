@@ -6,7 +6,7 @@ function Carrinho() {
     const [carrinho, setCarrinho] = useState([]);
     const [nomeItem, setNomeItem] = useState('');
     const [quantidadeItem, setQuantidadeItem] = useState(1);
-    const [precoItem, setPrecoItem] = useState(0);
+    const [precoItem, setPrecoItem] = useState('');
     const [codigoDesconto, setCodigoDesconto] = useState('');
     const [total, setTotal] = useState(0);
 
@@ -17,8 +17,8 @@ function Carrinho() {
         setTotal(novoTotal)
     }
 
-    const adicionarItem = (a) => {
-        a.preventDefault();
+    const adicionarItem = (event) => {
+        event.preventDefault();
 
         const itemExistente = carrinho.find((item) => item.nome === nomeItem)
         let novoCarrinho
@@ -35,13 +35,14 @@ function Carrinho() {
         atualizarTotal(novoCarrinho)
         setNomeItem('')
         setQuantidadeItem(1)
-        setPrecoItem(0)
+        setPrecoItem('')
     }
 
     const removerItem = (index) => {
         const novoCarrinho = carrinho.filter((_, i) => i !== index)
         setCarrinho(novoCarrinho)
         atualizarTotal(novoCarrinho)
+        alert('Item removido!')
     }
 
     const aumentarQuantidade = (index) => {
@@ -58,8 +59,8 @@ function Carrinho() {
         atualizarTotal(novoCarrinho)
     }
 
-    const aplicarDesconto = (a) => {
-        a.preventDefault()
+    const aplicarDesconto = (event) => {
+        event.preventDefault()
 
         let desconto = 0
         if (codigoDesconto === 'DESC10') {
@@ -89,15 +90,15 @@ function Carrinho() {
         <div className="form">
             <form className="form-item" onSubmit={adicionarItem}>
                 <label>Produto:</label>
-                <input type="text" value={nomeItem} onChange={(a) => setNomeItem(a.target.value)} placeholder="Nome do Produto" required />
+                <input type="text" value={nomeItem} onChange={(event) => setNomeItem(event.target.value)} placeholder="Nome do Produto" required />
                 <label>Quantidade:</label>
-                <input type="number" value={quantidadeItem} onChange={(a) => setQuantidadeItem(parseInt(a.target.value))} min="1" required />
+                <input type="number" value={quantidadeItem} onChange={(event) => setQuantidadeItem(parseInt(event.target.value))} min="1" required />
                 <label>Preço:</label>
-                <input type="number" value={precoItem} onChange={(a) => setPrecoItem(parseFloat(a.target.value))} min="0.01" step="0.01" required />
+                <input type="number" value={precoItem} onChange={(event) => setPrecoItem(parseFloat(event.target.value))} min="0.01" step="0.01" placeholder="$" required />
                 <button type="submite">Adicionar</button>
             </form>
             <form className="form-desc" onSubmit={aplicarDesconto}>
-                <input type="text" value={codigoDesconto} onChange={(a) => setCodigoDesconto(a.target.value)} placeholder="Código de Desconto" />
+                <input type="text" value={codigoDesconto} onChange={(event) => setCodigoDesconto(event.target.value)} placeholder="Código de Desconto" />
                 <button type="submite">Aplicar</button>
             </form>
             <table className="expanded-table">
@@ -129,16 +130,6 @@ function Carrinho() {
             <div className="total">
                 <p>Total: R${total.toFixed(2)}</p>
             </div>
-        </div>
-        <div className="promo">
-            <h3>Atenção!</h3>
-            <p>Use um dos nossos códigos de Desconto:</p>
-            <ul>
-                <li>DESC20</li>
-                <li>DESC30</li>
-                <li>DESC40</li>
-                <li>DESC50</li>
-            </ul>
         </div>
       </div>
     )
